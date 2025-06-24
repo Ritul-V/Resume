@@ -1,25 +1,43 @@
-import logo from './logo.svg';
-import './App.css';
+import React, { useEffect, useState } from "react";
+import { useRoutes } from "react-router-dom";
+import getRoutes from "./routes";
+import "./App.scss";
+import "aos/dist/aos.css";
+import AOS from "aos";
+import ThemeContext from "./theme/ThemeContext";
 
-function App() {
+const App = () => {
+  const [theme, setTheme] = useState(() => {
+    return localStorage.getItem("app-theme") || "dark";
+  });
+
+  useEffect(() => {
+    AOS.init({
+      duration: 1000,
+    });
+  }, []);
+
+  useEffect(() => {
+    document.body.setAttribute("data-bs-theme", theme);
+    document.body.classList.remove("light", "dark");
+    document.body.classList.add(theme);
+
+    // Save theme to localStorage
+    localStorage.setItem("app-theme", theme);
+  }, [theme]);
+
+  const toggleTheme = () => {
+    setTheme((prev) => (prev === "light" ? "dark" : "light"));
+  };
+
+  const routing = useRoutes(getRoutes());
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <>
+      <ThemeContext.Provider value={{ theme, toggleTheme }}>
+        {routing}
+      </ThemeContext.Provider>
+    </>
   );
-}
+};
 
 export default App;

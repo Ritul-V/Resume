@@ -1,0 +1,79 @@
+@media only screen and (max-width: 992px) {
+  .bg-hi {
+    left: 10%;
+  }
+}
+
+@media only screen and (max-width: 767px) {
+  .navbar-brand {
+    svg {
+      width: 30px;
+    }
+    .fs-2 {
+      font-size: 1.5rem !important;
+    }
+  }
+  .experience-row {
+    margin: 0;
+    .experience-child {
+      z-index: 1;
+
+      &::before {
+        display: none;
+      }
+      &:nth-child(odd) {
+        padding-right: 0;
+        padding-left: 0;
+        &::after {
+          right: 50%;
+          top: 0;
+          height: 100%;
+        }
+      }
+      &:nth-child(even) {
+        padding-left: 0;
+        padding-right: 0;
+        &::after {
+          left: 50%;
+          top: 0;
+          height: 100%;
+        }
+      }
+    }
+  }
+  .timline-dot {
+    border: 0px;
+  }
+  .timline-dot::before {
+    content: "";
+    position: absolute;
+    width: 2px;
+    height: 100px;
+    background: var(--bs-light);
+    border-radius: 0;
+    top: -20%;
+    right: calc(50% - 1px);
+    z-index: 0;
+  }
+  .timline-dot::after {
+    content: "";
+    position: absolute;
+    width: 0;
+    height: 0;
+    background: var(--bs-light);
+    border-radius: 50%;
+    top: 0%;
+    right: calc(50% - 7px);
+  }
+  .experience-start-icon-dec::before {
+    content: "";
+    position: absolute;
+    width: 2px;
+    height: 80px;
+    background: var(--bs-light);
+    border-radius: 0;
+    top: -20%;
+    right: calc(50% - 1px);
+    z-index: 0;
+  }
+}

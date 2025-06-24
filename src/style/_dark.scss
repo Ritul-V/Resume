@@ -1,0 +1,29 @@
+/* Light Theme */
+[data-bs-theme="light"] {
+  --bs-body-bg: #fff;
+  --bs-light: #111;
+  --bg-experience: #eee;
+  --bs-dark: #fff;
+
+  .experience-highlight {
+    color: #fff;
+  }
+  .bg-experience {
+    &:hover {
+      color: #fff;
+      .text-primary {
+        color: #fff !important;
+      }
+    }
+  }
+}
+
+/* Dark Theme */
+[data-bs-theme="dark"] {
+  --bs-body-bg: #0f0715;
+  --bs-secondary-bg-subtle: #050709;
+  --bs-body-color: #ccc;
+  --bs-light: #ccc;
+  --bg-experience: #140c1c;
+  --bs-dark: #050709;
+}
